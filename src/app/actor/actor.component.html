@@ -1,0 +1,45 @@
+<p>actor works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Actor Name</th>
+            <th>Actor Age</th>
+            <th>Industry-Type</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of actor">
+          <td>{{e.Name}}</td>  
+            <td>{{e.Age}}</td>
+            <td>{{e.industry}}</td>
+            <td><button (click)="edit(e.id)">Edit</button>
+                <button (click)="deleteActor(e.id)">delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<form action="" #form="ngForm" class="form-group">
+    <div>
+        <label for="Name">Actor Name:</label>
+        <input type="text" name="Name" id="" [(ngModel)]="body.Name" class="form-control">
+    </div>
+    <div>
+        <label for="Age">Actor Age:</label>
+        <input type="number" name="Age" id="" [(ngModel)]="body.Age" class="form-control">
+    </div>
+    <div>
+        <label for="industry">Industry-Type:</label>
+        <input type="text" name="Industry-type" id="" [(ngModel)]="body.industry" class="form-control">
+    </div>
+<div>
+    <input type="button" *ngIf="!isVisible" (click)="createActor()" value="create">
+    <input type="button" *ngIf="isVisible" (click)="updateActor()" value="update">
+</div>
+</form>
+
+{{form.value | json}}
